@@ -14,6 +14,12 @@ public class Lotto {
         validateDuplicate(numbers);
     }
 
+    private void validateNumberRange(int number) {
+        if (number<1 || number>45) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void validateDuplicate(List<Integer> numbers) {
         long uniqueSize = numbers.stream()
                 .distinct()
@@ -22,5 +28,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+
 
 }
