@@ -35,4 +35,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
+    }
 }
