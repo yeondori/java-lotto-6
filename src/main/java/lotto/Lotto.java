@@ -11,10 +11,17 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateNumbersRange(numbers);
         validateDuplicate(numbers);
     }
 
-    private void validateNumberRange(int number) {
+    private void validateNumbersRange(List<Integer> numbers) {
+        numbers.forEach(
+                number -> validateRange(number)
+        );
+    }
+
+    private void validateRange(int number) {
         if (number<1 || number>45) {
             throw new IllegalArgumentException();
         }
@@ -28,7 +35,4 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-
-
 }
