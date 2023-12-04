@@ -27,7 +27,7 @@ public class Lotto {
         }
     }
 
-    private static void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) {
         long uniqueSize = numbers.stream()
                 .distinct()
                 .count();
