@@ -22,7 +22,7 @@ public class Lotto {
     }
 
     private void validateRange(int number) {
-        if (number<1 || number>45) {
+        if (number < 1 || number > 45) {
             throw new IllegalArgumentException();
         }
     }
