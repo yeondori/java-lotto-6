@@ -3,31 +3,24 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<Ball> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
+    private Lotto(List<Ball> numbers) {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        validateNumbersRange(numbers);
+    public static Lotto from(List<Integer> numbers) {
         validateDuplicate(numbers);
+        return new Lotto(parseLottoNumbers(numbers));
     }
 
-    private void validateNumbersRange(List<Integer> numbers) {
-        numbers.forEach(
-                number -> validateRange(number)
-        );
+    private static List<Ball> parseLottoNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .map(Ball::new)
+                .toList();
     }
 
-    private void validateRange(int number) {
-        if (number < 1 || number > 45) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateDuplicate(List<Integer> numbers) {
+    private static void validateDuplicate(List<Integer> numbers) {
         long uniqueSize = numbers.stream()
                 .distinct()
                 .count();
