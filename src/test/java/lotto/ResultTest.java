@@ -1,6 +1,7 @@
 package lotto;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -35,4 +36,13 @@ class ResultTest {
         Result result = Result.getResult(FIFTH_PRIZE_MATCHING_NUM, matchBonus);
         assertThat(result).isEqualTo(Result.FIFTH_PRIZE);
     }
+
+    @DisplayName("보너스 숫자가 일치하고, 일치하는 개수가 5일 경우 2등이다.")
+    @Test
+    void getResultWithSecondPrize() throws Exception {
+        Result result = Result.getResult(SECOND_AND_THIRD_PRIZE_MATCHING_NUM, true);
+        assertThat(result).isEqualTo(Result.SECOND_PRIZE);
+    }
+
+
 }
