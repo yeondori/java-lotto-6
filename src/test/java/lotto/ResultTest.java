@@ -73,6 +73,4 @@ class ResultTest {
         Result result = Result.getResult(SECOND_AND_THIRD_PRIZE_MATCHING_NUM, false);
         assertThat(result).isEqualTo(Result.THIRD_PRIZE);
     }
-
-
 }
