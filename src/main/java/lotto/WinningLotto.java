@@ -15,4 +15,12 @@ public class WinningLotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public Ball getBonus() {
+        return bonus;
+    }
 }

@@ -33,4 +33,8 @@ public class Lotto {
         return numbers.stream()
                 .anyMatch(number -> number.equals(ballNumber));
     }
+
+    public List<Ball> getNumbers() {
+        return numbers;
+    }
 }
