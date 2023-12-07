@@ -16,6 +16,10 @@ public class Ball {
         }
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public boolean isNumber(int targetNumber) {
         return Objects.equals(number, targetNumber);
     }
