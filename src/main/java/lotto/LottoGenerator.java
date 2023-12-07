@@ -15,6 +15,12 @@ public class LottoGenerator {
     }
 
     private void validateAmount(int amount) {
+        if (amount < 1000) {
+            throw new IllegalArgumentException("로또 최소 구매금액은 1,000원입니다");
+        }
+        if ((amount % 1000) != 0) {
+            throw new IllegalArgumentException("로또는 1,000원 단위로 구매 가능합니다.");
+        }
     }
 
     private List<Integer> getRandomNumbers() {
