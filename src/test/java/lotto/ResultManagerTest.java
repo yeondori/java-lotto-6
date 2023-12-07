@@ -40,4 +40,21 @@ class ResultManagerTest {
         //then
         assertThat(lottoResult).isEqualTo(Result.SECOND_PRIZE);
     }
+
+    @DisplayName("보너스 번호를 제외한 5개 번호가 일치하는 경우 3등을 반환한다.")
+    @Test
+    void getResultWithThirdPrize() {
+        //given
+        Lotto lotto = Lotto.from(Arrays.asList(1, 2, 3, 4, 5, 7));
+        Ball bonusBall = new Ball(45);
+        Lotto winningNumbers = Lotto.from(Arrays.asList(1, 2, 3, 4, 5, 8));
+
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusBall);
+        //when
+        ResultManager resultManager = new ResultManager(lotto, winningLotto);
+
+        Result lottoResult = resultManager.getLottoResult();
+        //then
+        assertThat(lottoResult).isEqualTo(Result.THIRD_PRIZE);
+    }
 }
