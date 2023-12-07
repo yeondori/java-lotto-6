@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Objects;
+
 public class Ball {
     private final int number;
 
@@ -12,5 +14,9 @@ public class Ball {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException("[ERROR] 로또 숫자의 범위는 1~45입니다.");
         }
+    }
+
+    public boolean isNumber(int targetNumber) {
+        return Objects.equals(number, targetNumber);
     }
 }
