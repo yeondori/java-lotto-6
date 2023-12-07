@@ -57,4 +57,21 @@ class ResultManagerTest {
         //then
         assertThat(lottoResult).isEqualTo(Result.THIRD_PRIZE);
     }
+
+    @DisplayName("일치하지 않는 경우 낙첨을 반환한다.")
+    @Test
+    void getResultWithNoPrize() {
+        //given
+        Lotto lotto = Lotto.from(Arrays.asList(1, 2, 3, 4, 5, 7));
+        Ball bonusBall = new Ball(45);
+        Lotto winningNumbers = Lotto.from(Arrays.asList(30, 31, 32, 33, 34, 35));
+
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusBall);
+        //when
+        ResultManager resultManager = new ResultManager(lotto, winningLotto);
+
+        Result lottoResult = resultManager.getLottoResult();
+        //then
+        assertThat(lottoResult).isEqualTo(Result.NONE);
+    }
 }
