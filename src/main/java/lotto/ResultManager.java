@@ -1,23 +1,31 @@
 package lotto;
 
 public class ResultManager {
-    public Result getLottoResult(Lotto lotto, WinningLotto winningLotto) {
+    private final Lotto lotto;
+    private final WinningLotto winningLotto;
+
+    public ResultManager(Lotto lotto, WinningLotto winningLotto) {
+        this.lotto = lotto;
+        this.winningLotto = winningLotto;
+    }
+
+    public Result getLottoResult() {
         Lotto winningNumbers = winningLotto.getLotto();
         Ball bonusBall = winningLotto.getBonus();
 
-        int matchNumber = countMatchingNumbers(lotto, winningNumbers);
-        boolean matchBonus = hasMatchBonus(lotto, bonusBall);
+        int matchNumber = countMatchingNumbers(winningNumbers);
+        boolean matchBonus = hasMatchBonus(bonusBall);
 
         return Result.getResult(matchNumber, matchBonus);
     }
-    public int countMatchingNumbers(Lotto lotto, Lotto winningNumbers) {
+    private int countMatchingNumbers(Lotto winningNumbers) {
         return lotto.getNumbers().stream()
                 .filter(winningNumbers::hasBall)
                 .toList()
                 .size();
     }
 
-    public boolean hasMatchBonus(Lotto lotto, Ball bonusBall) {
+    public boolean hasMatchBonus(Ball bonusBall) {
         return lotto.hasBall(bonusBall);
     }
 }
